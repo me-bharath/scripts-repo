@@ -27,10 +27,16 @@ spec:
                 secretKeyRef:
                   name: flaskapi-secrets
                   key: db_root_password
-            - name: db_name
-              value: flaskapp
+            - name: mysql_db
+              valueFrom:
+                configMapKeyRef:
+                  name: flaskapi-config
+                  key: mysql_db
             - name: mysql_host
-              value: #MySql service name to be updated here
+              valueFrom:
+                configMapKeyRef:
+                  name: flaskapi-config
+                  key: mysql_db
 
 ---
 apiVersion: v1
